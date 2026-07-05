@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: medisense-api
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MRS_ENVIRONMENT
+        value: production
+      - key: MRS_DEBUG
+        value: "false"
+      - key: MRS_DATABASE_URL
+        value: sqlite:////var/data/medicine_recommendation.db
+    disk:
+      name: medisense-data
+      mountPath: /var/data
+      sizeGB: 1

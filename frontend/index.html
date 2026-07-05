@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Medisense AI</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="bg-orb orb-a"></div>
+        <div class="bg-orb orb-b"></div>
+        <div class="shell">
+            <nav class="topbar glass">
+                <div class="brand-wrap">
+                    <div class="brand-mark">✦</div>
+                    <div>
+                        <div class="brand">Medisense AI</div>
+                        <div class="caption">
+                            Prescription intelligence, safer alternatives,
+                            modern clinical support
+                        </div>
+                    </div>
+                </div>
+                <div class="top-actions">
+                    <span class="pill">Educational use only</span>
+                    <button id="themeToggle" class="ghost-btn">
+                        Appearance
+                    </button>
+                </div>
+            </nav>
+
+            <header class="hero glass">
+                <div class="hero-copy">
+                    <span class="eyebrow"
+                        >AI-powered medicine intelligence</span
+                    >
+                    <h1>
+                        Scan prescriptions. Review risks. Surface cheaper
+                        alternatives.
+                    </h1>
+                    <p>
+                        A modern Apple-inspired medicine recommendation
+                        workspace for educational clinical decision support. It
+                        analyzes symptoms, matches medicines, highlights safety
+                        signals, and estimates lower-cost alternatives.
+                    </p>
+                    <div class="hero-chips">
+                        <span class="chip">Prescription scanner</span>
+                        <span class="chip">Cheapest alternatives</span>
+                        <span class="chip">Interaction checks</span>
+                        <span class="chip">Confidence scoring</span>
+                    </div>
+                </div>
+                <div class="hero-panel glass inner-panel">
+                    <div class="metric-label">System health</div>
+                    <div id="healthStatus" class="metric-value">Checking…</div>
+                    <div id="healthDisclaimer" class="caption"></div>
+                </div>
+            </header>
+
+            <section class="notice glass">
+                <strong>Medical disclaimer:</strong>
+                This application is for educational purposes and clinical
+                decision support only. It is not a substitute for professional
+                medical advice, diagnosis, treatment, or prescribing decisions.
+            </section>
+
+            <main class="dashboard">
+                <section class="workspace-column">
+                    <div class="panel glass">
+                        <div class="panel-head">
+                            <h2>Prescription scanner</h2>
+                            <span class="panel-tag">AI OCR-ready workflow</span>
+                        </div>
+                        <p class="panel-subtitle">
+                            Paste prescription text to simulate scanning and
+                            compare estimated alternatives.
+                        </p>
+                        <textarea
+                            id="prescriptionText"
+                            rows="8"
+                            placeholder="Example:
+Tab Aceclo Plus 10'S
+Paracetamol 500mg Tablet
+Ibuprofen SOS"
+                        ></textarea>
+                        <button id="scanBtn" class="primary-btn">
+                            Scan prescription
+                        </button>
+                        <div id="scanResults" class="stack"></div>
+                    </div>
+
+                    <div class="panel glass">
+                        <div class="panel-head">
+                            <h2>Patient context</h2>
+                            <span class="panel-tag">Safety-aware</span>
+                        </div>
+                        <div class="form-grid">
+                            <div>
+                                <label>Symptoms</label>
+                                <textarea
+                                    id="symptoms"
+                                    rows="4"
+                                    placeholder="fever, cough, headache"
+                                ></textarea>
+                            </div>
+                            <div>
+                                <label>Diagnosed disease</label>
+                                <input
+                                    id="disease"
+                                    placeholder="Optional diagnosed disease"
+                                />
+                            </div>
+                            <div>
+                                <label>Age</label>
+                                <input id="age" type="number" value="30" />
+                            </div>
+                            <div>
+                                <label>Weight (kg)</label>
+                                <input id="weight" type="number" value="70" />
+                            </div>
+                            <div>
+                                <label>Gender</label>
+                                <select id="gender">
+                                    <option value="undisclosed">
+                                        Undisclosed
+                                    </option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Severity</label>
+                                <select id="severity">
+                                    <option value="mild">Mild</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="severe">Severe</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Medical conditions</label>
+                                <input
+                                    id="conditions"
+                                    placeholder="kidney disease, hypertension"
+                                />
+                            </div>
+                            <div>
+                                <label>Allergies</label>
+                                <input
+                                    id="allergies"
+                                    placeholder="penicillin, aspirin"
+                                />
+                            </div>
+                            <div class="full-span">
+                                <label>Current medications</label>
+                                <input
+                                    id="medications"
+                                    placeholder="ibuprofen, metformin"
+                                />
+                            </div>
+                        </div>
+                        <div class="toggle-row">
+                            <label class="toggle"
+                                ><input id="pregnancy" type="checkbox" /><span
+                                    >Pregnancy</span
+                                ></label
+                            >
+                            <label class="toggle"
+                                ><input
+                                    id="breastfeeding"
+                                    type="checkbox"
+                                /><span>Breastfeeding</span></label
+                            >
+                        </div>
+                        <button id="recommendBtn" class="primary-btn">
+                            Generate recommendations
+                        </button>
+                    </div>
+                </section>
+
+                <section class="results-column">
+                    <div class="panel glass sticky-panel">
+                        <div class="panel-head">
+                            <h2>AI recommendation console</h2>
+                            <span class="panel-tag">Explainable</span>
+                        </div>
+                        <div id="confidence" class="stack"></div>
+                        <div id="diseaseMatches" class="stack"></div>
+                        <div id="recommendations" class="stack"></div>
+                        <div id="alternatives" class="stack"></div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

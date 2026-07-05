@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Medisense — AI medicine intelligence</title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <svg class="icon-sprite" aria-hidden="true">
+            <defs>
+                <symbol id="icon-pulse" viewBox="0 0 24 24">
+                    <path
+                        d="M2 12h4l2.5 7L13 5l2.5 7H22"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </symbol>
+                <symbol id="icon-scan" viewBox="0 0 24 24">
+                    <path
+                        d="M4 8V5a1 1 0 0 1 1-1h3M20 8V5a1 1 0 0 0-1-1h-3M4 16v3a1 1 0 0 0 1 1h3M20 16v3a1 1 0 0 1-1 1h-3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                    <line
+                        x1="4"
+                        y1="12"
+                        x2="20"
+                        y2="12"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                    />
+                </symbol>
+                <symbol id="icon-upload" viewBox="0 0 24 24">
+                    <path
+                        d="M12 16V4M12 4l-4 4M12 4l4 4M5 16v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </symbol>
+                <symbol id="icon-shield" viewBox="0 0 24 24">
+                    <path
+                        d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                    />
+                </symbol>
+                <symbol id="icon-alert" viewBox="0 0 24 24">
+                    <path
+                        d="M12 4l9 16H3L12 4z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                    />
+                    <line
+                        x1="12"
+                        y1="10"
+                        x2="12"
+                        y2="14"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                    />
+                    <circle
+                        cx="12"
+                        cy="17"
+                        r="0.9"
+                        fill="currentColor"
+                        stroke="none"
+                    />
+                </symbol>
+                <symbol id="icon-chart" viewBox="0 0 24 24">
+                    <path
+                        d="M4 20V10M12 20V4M20 20v-7"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                    />
+                </symbol>
+                <symbol id="icon-moon" viewBox="0 0 24 24">
+                    <path
+                        d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                    />
+                </symbol>
+                <symbol id="icon-sun" viewBox="0 0 24 24">
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                    />
+                    <path
+                        d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                    />
+                </symbol>
+                <symbol id="icon-arrow" viewBox="0 0 24 24">
+                    <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </symbol>
+                <symbol id="icon-check" viewBox="0 0 24 24">
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                    />
+                    <path
+                        d="M8 12.5l2.5 2.5L16 9.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </symbol>
+                <symbol id="icon-database" viewBox="0 0 24 24">
+                    <ellipse
+                        cx="12"
+                        cy="5.5"
+                        rx="7"
+                        ry="2.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                    />
+                    <path
+                        d="M5 5.5V12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5.5M5 12v6.5c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V12"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                    />
+                </symbol>
+                <symbol id="icon-users" viewBox="0 0 24 24">
+                    <circle
+                        cx="9"
+                        cy="8"
+                        r="3.2"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                    />
+                    <path
+                        d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16 8.2a3 3 0 1 1 3.6 2.94M17.5 14.6c2.3.5 3.7 2.3 3.7 4.9"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                    />
+                </symbol>
+                <symbol id="icon-capsule" viewBox="0 0 24 24">
+                    <rect
+                        x="3"
+                        y="9.5"
+                        width="18"
+                        height="5"
+                        rx="2.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        transform="rotate(-30 12 12)"
+                    />
+                    <line
+                        x1="10.5"
+                        y1="7.3"
+                        x2="13.5"
+                        y2="16.7"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                    />
+                </symbol>
+                <symbol id="icon-flask" viewBox="0 0 24 24">
+                    <path
+                        d="M9 3h6M10 3v6l-5.2 8.6A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3.4L14 9V3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                    />
+                    <line
+                        x1="7.5"
+                        y1="15"
+                        x2="16.5"
+                        y2="15"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                    />
+                </symbol>
+            </defs>
+        </svg>
+
+        <div class="bg-mesh" aria-hidden="true"></div>
+
+        <div class="shell">
+            <nav class="topbar">
+                <a class="brand" href="#top">
+                    <span class="brand-mark"
+                        ><svg class="icon" width="20" height="20">
+                            <use href="#icon-flask" /></svg
+                    ></span>
+                    <span class="brand-name">Medisense</span>
+                </a>
+
+                <div class="nav-links">
+                    <a href="#workspace">Workspace</a>
+                    <a href="#results">Insights</a>
+                    <a href="#system-status">System</a>
+                </div>
+
+                <div class="nav-right">
+                    <span class="pill pill-muted">
+                        <svg class="icon" width="14" height="14">
+                            <use href="#icon-shield" />
+                        </svg>
+                        Educational use only
+                    </span>
+                    <button
+                        id="themeToggle"
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Toggle appearance"
+                    >
+                        <svg class="icon icon-sun" width="18" height="18">
+                            <use href="#icon-sun" />
+                        </svg>
+                        <svg class="icon icon-moon" width="18" height="18">
+                            <use href="#icon-moon" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+
+            <header class="hero" id="top">
+                <div class="hero-copy">
+                    <span class="eyebrow">
+                        <svg class="icon" width="14" height="14">
+                            <use href="#icon-pulse" />
+                        </svg>
+                        AI-assisted medicine intelligence
+                    </span>
+                    <h1>Understand your prescription before you take it.</h1>
+                    <p class="hero-lede">
+                        Medisense reads prescriptions, cross-checks safety
+                        against your health profile, and surfaces lower-cost
+                        alternatives — with every recommendation explained in
+                        plain language.
+                    </p>
+
+                    <div class="hero-actions">
+                        <button
+                            id="runDemoBtn"
+                            class="btn btn-primary"
+                            type="button"
+                        >
+                            Run a live example
+                            <svg class="icon" width="16" height="16">
+                                <use href="#icon-arrow" />
+                            </svg>
+                        </button>
+                        <button
+                            id="loadDemoBtn"
+                            class="btn btn-ghost"
+                            type="button"
+                        >
+                            Prefill sample data
+                        </button>
+                    </div>
+
+                    <dl class="hero-stats">
+                        <div>
+                            <dt>Catalog size</dt>
+                            <dd id="statMedicines">—</dd>
+                        </div>
+                        <div>
+                            <dt>Safety checks per result</dt>
+                            <dd>10+</dd>
+                        </div>
+                        <div>
+                            <dt>Typical response</dt>
+                            <dd>&lt; 500 ms</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="hero-panel">
+                    <div class="status-row">
+                        <span class="status-dot" id="apiStatusDot"></span>
+                        <span id="healthStatus">Connecting…</span>
+                    </div>
+                    <p class="hero-panel-caption" id="healthDisclaimer">
+                        Checking backend availability.
+                    </p>
+                    <div class="hero-panel-divider"></div>
+                    <ul class="hero-feature-list">
+                        <li>
+                            <svg class="icon" width="16" height="16">
+                                <use href="#icon-scan" /></svg
+                            >Prescription text &amp; image scanning
+                        </li>
+                        <li>
+                            <svg class="icon" width="16" height="16">
+                                <use href="#icon-shield" /></svg
+                            >Allergy, pregnancy &amp; organ-risk checks
+                        </li>
+                        <li>
+                            <svg class="icon" width="16" height="16">
+                                <use href="#icon-chart" /></svg
+                            >Confidence-scored recommendations
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <section class="notice">
+                <svg class="icon" width="18" height="18">
+                    <use href="#icon-shield" />
+                </svg>
+                <p>
+                    <strong>Medical disclaimer.</strong>
+                    This application is for educational purposes and clinical
+                    decision support only. It is not a substitute for
+                    professional medical advice, diagnosis, treatment, or
+                    prescribing decisions.
+                </p>
+            </section>
+
+            <main class="workspace" id="workspace">
+                <section class="panel workspace-panel">
+                    <div class="segmented" role="tablist">
+                        <button
+                            class="segmented-btn is-active"
+                            type="button"
+                            data-tab="scan"
+                            role="tab"
+                            aria-selected="true"
+                        >
+                            <svg class="icon" width="16" height="16">
+                                <use href="#icon-scan" />
+                            </svg>
+                            Prescription scanner
+                        </button>
+                        <button
+                            class="segmented-btn"
+                            type="button"
+                            data-tab="symptom"
+                            role="tab"
+                            aria-selected="false"
+                        >
+                            <svg class="icon" width="16" height="16">
+                                <use href="#icon-pulse" />
+                            </svg>
+                            Symptom &amp; risk profile
+                        </button>
+                    </div>
+
+                    <div class="tab-panel is-active" data-tab-panel="scan">
+                        <p class="panel-lede">
+                            Paste the text of a prescription, or upload a photo
+                            or text file. We extract each line item, match it
+                            against the catalog, and surface a lower-cost
+                            alternative where one exists.
+                        </p>
+
+                        <textarea
+                            id="prescriptionText"
+                            rows="6"
+                            placeholder="Tab Aceclo Plus 10'S&#10;Paracetamol 500mg Tablet&#10;Ibuprofen SOS"
+                        ></textarea>
+
+                        <div class="field">
+                            <label for="prescriptionFile"
+                                >Or upload an image / text file</label
+                            >
+                            <input
+                                id="prescriptionFile"
+                                type="file"
+                                accept=".png,.jpg,.jpeg,.webp,.gif,.bmp,.tiff,.txt,.md,.csv"
+                            />
+                        </div>
+
+                        <div class="action-row">
+                            <button
+                                id="scanBtn"
+                                class="btn btn-primary"
+                                type="button"
+                            >
+                                <svg class="icon" width="16" height="16">
+                                    <use href="#icon-scan" />
+                                </svg>
+                                Scan text
+                            </button>
+                            <button
+                                id="scanImageBtn"
+                                class="btn btn-ghost"
+                                type="button"
+                            >
+                                <svg class="icon" width="16" height="16">
+                                    <use href="#icon-upload" />
+                                </svg>
+                                Scan uploaded file
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" data-tab-panel="symptom">
+                        <p class="panel-lede">
+                            Add symptoms and relevant risk factors.
+                            Recommendations adapt to age, pregnancy status,
+                            organ conditions, allergies, and current
+                            medications.
+                        </p>
+
+                        <div class="field">
+                            <label for="symptoms">Symptoms</label>
+                            <textarea
+                                id="symptoms"
+                                rows="3"
+                                placeholder="fever, cough, headache"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="disease">Diagnosed disease</label>
+                                <input id="disease" placeholder="Optional" />
+                            </div>
+                            <div class="field">
+                                <label for="medications"
+                                    >Current medications</label
+                                >
+                                <input
+                                    id="medications"
+                                    placeholder="ibuprofen, metformin"
+                                />
+                            </div>
+                            <div class="field">
+                                <label for="age">Age</label>
+                                <input id="age" type="number" value="30" />
+                            </div>
+                            <div class="field">
+                                <label for="weight">Weight (kg)</label>
+                                <input id="weight" type="number" value="70" />
+                            </div>
+                            <div class="field">
+                                <label for="gender">Gender</label>
+                                <select id="gender">
+                                    <option value="undisclosed">
+                                        Undisclosed
+                                    </option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="severity">Severity</label>
+                                <select id="severity">
+                                    <option value="mild">Mild</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="severe">Severe</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="conditions"
+                                    >Medical conditions</label
+                                >
+                                <input
+                                    id="conditions"
+                                    placeholder="kidney disease, hypertension"
+                                />
+                            </div>
+                            <div class="field">
+                                <label for="allergies">Allergies</label>
+                                <input
+                                    id="allergies"
+                                    placeholder="penicillin, aspirin"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="toggle-row">
+                            <label class="toggle">
+                                <input id="pregnancy" type="checkbox" />
+                                <span>Pregnancy</span>
+                            </label>
+                            <label class="toggle">
+                                <input id="breastfeeding" type="checkbox" />
+                                <span>Breastfeeding</span>
+                            </label>
+                        </div>
+
+                        <div class="action-row">
+                            <button
+                                id="recommendBtn"
+                                class="btn btn-primary"
+                                type="button"
+                            >
+                                <svg class="icon" width="16" height="16">
+                                    <use href="#icon-pulse" />
+                                </svg>
+                                Generate recommendations
+                            </button>
+                            <span id="requestState" class="state-text"
+                                >Ready</span
+                            >
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel results-panel" id="results">
+                    <div class="results-header">
+                        <div>
+                            <h2>Results</h2>
+                            <p class="panel-lede">
+                                Explainable, confidence-scored output appears
+                                here.
+                            </p>
+                        </div>
+                        <div
+                            class="confidence-ring"
+                            id="confidenceRing"
+                            aria-hidden="true"
+                        >
+                            <svg width="64" height="64" viewBox="0 0 64 64">
+                                <circle
+                                    class="ring-track"
+                                    cx="32"
+                                    cy="32"
+                                    r="27"
+                                />
+                                <circle
+                                    class="ring-value"
+                                    id="confidenceRingCircle"
+                                    cx="32"
+                                    cy="32"
+                                    r="27"
+                                />
+                            </svg>
+                            <span class="ring-label" id="confidenceRingLabel"
+                                >—</span
+                            >
+                        </div>
+                    </div>
+                    <p class="ring-caption" id="ringCaption">
+                        Waiting for input
+                    </p>
+
+                    <div id="resultsBody">
+                        <div class="empty-state">
+                            <svg class="icon" width="22" height="22">
+                                <use href="#icon-chart" />
+                            </svg>
+                            <h3>Nothing analyzed yet</h3>
+                            <p>
+                                Run a live example, scan a prescription, or
+                                generate a recommendation to see results here.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <details class="system-status" id="system-status">
+                <summary>
+                    <svg class="icon" width="16" height="16">
+                        <use href="#icon-database" />
+                    </svg>
+                    System status
+                    <span class="summary-hint"
+                        >Live API and database diagnostics</span
+                    >
+                </summary>
+                <div class="system-status-body">
+                    <div class="action-row">
+                        <button
+                            id="refreshDebugBtn"
+                            class="btn btn-ghost btn-small"
+                            type="button"
+                        >
+                            Refresh
+                        </button>
+                        <span id="debugState" class="state-text"
+                            >Not loaded</span
+                        >
+                    </div>
+                    <div id="debugPanel">
+                        <div class="empty-state empty-state-compact">
+                            <p>
+                                Use refresh to inspect saved patients,
+                                recommendation history, and the medicine
+                                catalog.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <footer class="footer">
+                <p>
+                    Medisense is a decision-support prototype. Always confirm
+                    medications with a licensed clinician or pharmacist.
+                </p>
+                <p>
+                    <a href="/static/pixel/index.html">Try the pixel edition</a>
+                </p>
+            </footer>
+        </div>
+
+        <script src="/static/app.js"></script>
+    </body>
+</html>

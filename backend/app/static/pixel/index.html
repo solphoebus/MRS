@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medisense Pixel — Save &amp; Stay Healthy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <div class="screen">
+      <header class="topbar">
+        <div class="brand">
+          <svg class="pixel-icon" viewBox="0 0 16 16" width="32" height="32" shape-rendering="crispEdges">
+            <rect x="4" y="1" width="8" height="2" fill="#ff5d8f"/>
+            <rect x="2" y="3" width="12" height="2" fill="#ff5d8f"/>
+            <rect x="1" y="5" width="14" height="7" fill="#ff8fb3"/>
+            <rect x="2" y="12" width="12" height="2" fill="#ff5d8f"/>
+            <rect x="4" y="14" width="8" height="1" fill="#ff5d8f"/>
+            <rect x="6" y="6" width="4" height="2" fill="#fff5f8"/>
+            <rect x="7" y="5" width="2" height="4" fill="#fff5f8"/>
+          </svg>
+          <div>
+            <h1>MEDISENSE</h1>
+            <p class="subtitle">pixel health quest</p>
+          </div>
+        </div>
+        <a class="badge-link" href="/">back to main site</a>
+      </header>
+
+      <section class="hero-card">
+        <p class="hero-text">
+          Scan your prescription, dodge bad interactions, and collect coins every time
+          you find a cheaper medicine!
+        </p>
+        <p class="hero-disclaimer">
+          For education only. Not a substitute for a real doctor or pharmacist.
+        </p>
+      </section>
+
+      <section class="savings-card" id="savingsCard">
+        <div class="coin-stack" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="40" height="40" shape-rendering="crispEdges" class="coin-spin">
+            <rect x="4" y="1" width="8" height="1" fill="#7a5b00"/>
+            <rect x="2" y="2" width="2" height="1" fill="#7a5b00"/>
+            <rect x="12" y="2" width="2" height="1" fill="#7a5b00"/>
+            <rect x="1" y="3" width="1" height="10" fill="#7a5b00"/>
+            <rect x="14" y="3" width="1" height="10" fill="#7a5b00"/>
+            <rect x="2" y="2" width="12" height="12" fill="#ffd23f"/>
+            <rect x="4" y="4" width="8" height="8" fill="#ffe98a"/>
+            <rect x="6" y="6" width="4" height="4" fill="#ffd23f"/>
+            <rect x="2" y="13" width="2" height="1" fill="#7a5b00"/>
+            <rect x="12" y="13" width="2" height="1" fill="#7a5b00"/>
+            <rect x="4" y="14" width="8" height="1" fill="#7a5b00"/>
+          </svg>
+        </div>
+        <div class="savings-info">
+          <p class="savings-label">TOTAL SAVED</p>
+          <p class="savings-amount" id="savingsAmount">Rs 0</p>
+          <div class="meter">
+            <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+          </div>
+          <p class="savings-caption" id="savingsCaption">Scan a prescription to start saving!</p>
+        </div>
+        <div class="mascot" id="mascot" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="48" height="48" shape-rendering="crispEdges">
+            <rect x="3" y="3" width="10" height="10" fill="#5be37d"/>
+            <rect x="1" y="5" width="2" height="6" fill="#5be37d"/>
+            <rect x="13" y="5" width="2" height="6" fill="#5be37d"/>
+            <rect x="5" y="6" width="2" height="2" fill="#123"/>
+            <rect x="9" y="6" width="2" height="2" fill="#123"/>
+            <rect id="mascotMouth" x="5" y="9" width="6" height="1" fill="#123"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="quest-card">
+        <div class="quest-header">
+          <span class="quest-tag">QUEST</span>
+          <h2>Scan a Prescription</h2>
+        </div>
+        <textarea
+          id="prescriptionText"
+          rows="5"
+          placeholder="Tab Aceclo Plus 10'S&#10;Paracetamol 500mg Tablet&#10;Ibuprofen SOS"
+        ></textarea>
+        <div class="btn-row">
+          <button id="scanBtn" class="pixel-btn pixel-btn-primary" type="button">SCAN &gt;&gt;</button>
+          <button id="demoBtn" class="pixel-btn" type="button">TRY DEMO</button>
+        </div>
+        <p id="scanState" class="scan-state">Ready player one.</p>
+      </section>
+
+      <section class="loot-card" id="lootCard">
+        <div class="quest-header">
+          <span class="quest-tag quest-tag-alt">LOOT</span>
+          <h2>Scan Results</h2>
+        </div>
+        <div id="lootList" class="loot-list">
+          <p class="empty-note">No items scanned yet. Your loot will appear here.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>MEDISENSE PIXEL EDITION · EDUCATIONAL DEMO ONLY</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

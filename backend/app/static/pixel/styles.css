@@ -1,0 +1,391 @@
+:root {
+  --bg: #1b1035;
+  --bg-alt: #241347;
+  --panel: #2c1a57;
+  --panel-light: #3a2470;
+  --ink: #f5f0ff;
+  --muted: #b7a8e0;
+  --accent: #5be37d;
+  --accent-dark: #2f9a4f;
+  --pink: #ff5d8f;
+  --gold: #ffd23f;
+  --danger: #ff5a5a;
+  --border: #0f0824;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  image-rendering: pixelated;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.screen {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  display: grid;
+  gap: 18px;
+}
+
+.pixel-box {
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--border);
+  background: var(--panel);
+}
+
+.topbar,
+.hero-card,
+.savings-card,
+.quest-card,
+.loot-card {
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--border);
+  background: var(--panel);
+  padding: 14px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg-alt);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pixel-icon {
+  flex: 0 0 auto;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--pink);
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.badge-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 9px;
+  border: 2px solid var(--accent);
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.badge-link:hover {
+  background: var(--accent);
+  color: var(--border);
+}
+
+.hero-card {
+  text-align: left;
+}
+
+.hero-text {
+  margin: 0 0 10px;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.hero-disclaimer {
+  margin: 0;
+  font-size: 8px;
+  color: var(--muted);
+  border-top: 2px dashed var(--panel-light);
+  padding-top: 10px;
+}
+
+.savings-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(180deg, var(--panel), var(--bg-alt));
+}
+
+.coin-stack {
+  display: grid;
+  place-items: center;
+}
+
+.coin-spin {
+  animation: spin 2.4s steps(8) infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.15);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.savings-info {
+  min-width: 0;
+}
+
+.savings-label {
+  margin: 0 0 6px;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.savings-amount {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 var(--border);
+}
+
+.meter {
+  height: 16px;
+  border: 3px solid var(--border);
+  background: var(--bg);
+  padding: 2px;
+}
+
+.meter-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent) 6px,
+    var(--accent-dark) 6px,
+    var(--accent-dark) 12px
+  );
+  transition: width 700ms steps(20);
+}
+
+.savings-caption {
+  margin: 8px 0 0;
+  font-size: 8px;
+  color: var(--muted);
+}
+
+.mascot {
+  display: grid;
+  place-items: center;
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.quest-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.quest-tag {
+  background: var(--pink);
+  color: var(--border);
+  padding: 4px 8px;
+  font-size: 9px;
+}
+
+.quest-tag-alt {
+  background: var(--gold);
+}
+
+.quest-card h2,
+.loot-card h2 {
+  margin: 0;
+  font-size: 12px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--ink);
+  border: 3px solid var(--border);
+  padding: 10px;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.8;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--accent);
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pixel-btn {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: var(--panel-light);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+  cursor: pointer;
+}
+
+.pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--border);
+}
+
+.pixel-btn-primary {
+  background: var(--accent);
+  color: var(--border);
+}
+
+.scan-state {
+  margin: 12px 0 0;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.scan-state.is-ok {
+  color: var(--accent);
+}
+
+.scan-state.is-error {
+  color: var(--danger);
+}
+
+.loot-list {
+  display: grid;
+  gap: 12px;
+}
+
+.empty-note {
+  margin: 0;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.loot-item {
+  border: 3px solid var(--border);
+  background: var(--bg-alt);
+  padding: 10px;
+}
+
+.loot-item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.loot-name {
+  font-size: 10px;
+  color: var(--ink);
+}
+
+.loot-status {
+  font-size: 8px;
+  padding: 3px 6px;
+  white-space: nowrap;
+}
+
+.loot-status-found {
+  background: var(--accent);
+  color: var(--border);
+}
+
+.loot-status-miss {
+  background: var(--panel-light);
+  color: var(--muted);
+}
+
+.loot-line {
+  font-size: 9px;
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+.loot-line strong {
+  color: var(--ink);
+}
+
+.loot-save {
+  color: var(--gold);
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 8px;
+  margin-top: 8px;
+}
+
+@media (max-width: 520px) {
+  body {
+    font-size: 11px;
+  }
+  .savings-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
